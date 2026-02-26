@@ -140,6 +140,3 @@ async def predict_tree(m: MushroomSchema):
     prob = tree.predict_proba([features])[0][1]
 
     return {'poisonous': bool(pred), 'probability': float(prob)}
-
-if __name__ == '__main__':
-    uvicorn.run('main:app', reload=True)

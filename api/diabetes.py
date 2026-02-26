@@ -22,6 +22,3 @@ async def predict(schema: DiabetesSchema):
         "diabetes": bool(diabetes),
         "probability": float(probability)
     }
-
-if __name__ == '__main__':
-    uvicorn.run('main:app', reload=True)

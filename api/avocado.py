@@ -35,6 +35,3 @@ async def predict(avocado: AvocadoSchema):
         "predicted_ripeness": predict_class,
         "probabilities": probabilities
     }
-
-if __name__ == '__main__':
-    uvicorn.run('main:app', reload=True)

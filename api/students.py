@@ -49,6 +49,3 @@ async def predict(student: StudentSchema):
     scaled_data = scaler.transform([features])
     predict_ = model.predict(scaled_data)[0]
     return {'predict': round(predict_, 2)}
-
-if __name__ == '__main__':
-    uvicorn.run('main:app', reload=True)

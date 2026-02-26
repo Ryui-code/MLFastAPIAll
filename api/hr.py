@@ -33,11 +33,8 @@ def build_features(hr: HrSchema):
 @hr_router.post('/')
 async def predict(hr: HrSchema):
     features = build_features(hr)
-    scaled_data = scaler.fit_transform([features])
+    scaled_data = scaler.transform([features])
     pred = model.predict(scaled_data)[0]
     prob = model.predict_proba(scaled_data)[0][1]
 
     return {'attrition': bool(pred), 'probability': round(prob, 2)}
-
-if __name__ == '__main__':
-    uvicorn.run('main:app', reload=True)

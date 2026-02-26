@@ -89,6 +89,3 @@ async def predict(telecom: TelecomSchema):
         "churn": bool(pred),
         "probability": round(prob, 2)
     }
-
-if __name__ == '__main__':
-    uvicorn.run('main:app', reload=True)

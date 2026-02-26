@@ -56,6 +56,3 @@ async def predict(bank: BankSchema):
         'loan_status': int(pred),
         'probability': float(prob)
     }
-
-if __name__ == '__main__':
-    uvicorn.run('main:app', reload=True)
