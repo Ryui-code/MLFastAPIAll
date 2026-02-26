@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 import joblib
-import uvicorn
 from schemas.sch import MushroomSchema
 
 mushrooms_router = APIRouter(prefix='/mushrooms-predict')

@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 import joblib
-import uvicorn
 from schemas.sch import StudentSchema
 
 students_router = APIRouter(prefix='/students-predict')

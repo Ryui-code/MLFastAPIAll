@@ -1,5 +1,4 @@
 import joblib
-import uvicorn
 from fastapi import APIRouter
 from schemas.sch import HrSchema
 

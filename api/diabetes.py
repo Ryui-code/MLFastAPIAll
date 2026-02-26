@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 import joblib
 from schemas.sch import DiabetesSchema
-import uvicorn
 
 diabetes_router = APIRouter(prefix='/diabetes-predict')
 

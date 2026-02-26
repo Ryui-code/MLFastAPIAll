@@ -1,6 +1,5 @@
 from fastapi import APIRouter
 import joblib
-import uvicorn
 from schemas.sch import TelecomSchema
 
 telecom_router = APIRouter(prefix='/telecom-predict')

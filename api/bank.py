@@ -1,7 +1,6 @@
 from fastapi import APIRouter
 from schemas.sch import BankSchema
 import joblib
-import uvicorn
 
 bank_router = APIRouter(prefix='/bank-predict')
 

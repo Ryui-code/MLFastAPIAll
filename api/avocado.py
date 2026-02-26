@@ -1,12 +1,11 @@
 from fastapi import APIRouter
 import joblib
-import uvicorn
 from schemas.sch import AvocadoSchema
 
 avocado_router = APIRouter(prefix='/avocado-predict')
 
-model = joblib.load('models/model (5).pkl')
-scaler = joblib.load('models/scaler (5).pkl')
+model = joblib.load('models/model (8).pkl')
+scaler = joblib.load('models/scaler (8).pkl')
 
 @avocado_router.post('/')
 async def predict(avocado: AvocadoSchema):
