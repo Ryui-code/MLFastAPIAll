@@ -5,7 +5,7 @@ st.title('Welcome!')
 
 with st.sidebar:
     model = st.radio('Models', ['Avocado', 'Bank', 'Diabetes', 'House', 'Mushrooms',
-                                     'Students', 'Telecom'])
+                                     'Students', 'Telecom', 'HR'])
 
 if model == 'House':
 
@@ -378,3 +378,94 @@ if model == 'Telecom':
                 st.error(f'Error: {request.status_code}')
         except requests.exceptions.RequestException:
             st.error('Can not connect to the api')
+
+if model == 'HR':
+
+    st.title("HR Model")
+
+    api = "http://127.0.0.1:8000/hr-predict/"
+
+    job_role_list = [
+        'Human Resources', 'Laboratory Technician', 'Manager', 'Manufacturing Director',
+        'Research Director', 'Research Scientist', 'Sales Executive', 'Sales Representative'
+    ]
+
+    business_travel_list = ['Travel_Frequently', 'Travel_Rarely']
+    department_list = ['Research & Development', 'Sales']
+    education_field_list = ['Life Sciences', 'Marketing', 'Medical', 'Other', 'Technical Degree']
+    marital_list = ['Married', 'Single']
+    gender_list = ['Male', 'Female']
+
+    Age = st.number_input("Age", min_value=18, max_value=70, step=1)
+    DailyRate = st.number_input("DailyRate", min_value=0, step=1)
+    DistanceFromHome = st.number_input("DistanceFromHome", min_value=0, step=1)
+    Education = st.number_input("Education", min_value=1, max_value=5, step=1)
+    EnvironmentSatisfaction = st.number_input("EnvironmentSatisfaction", min_value=1, max_value=4, step=1)
+    HourlyRate = st.number_input("HourlyRate", min_value=0, step=1)
+    JobInvolvement = st.number_input("JobInvolvement", min_value=1, max_value=4, step=1)
+    JobLevel = st.number_input("JobLevel", min_value=1, max_value=5, step=1)
+    JobSatisfaction = st.number_input("JobSatisfaction", min_value=1, max_value=4, step=1)
+    MonthlyIncome = st.number_input("MonthlyIncome", min_value=0, step=1)
+    MonthlyRate = st.number_input("MonthlyRate", min_value=0, step=1)
+    NumCompaniesWorked = st.number_input("NumCompaniesWorked", min_value=0, step=1)
+    PercentSalaryHike = st.number_input("PercentSalaryHike", min_value=0, step=1)
+    PerformanceRating = st.number_input("PerformanceRating", min_value=1, max_value=4, step=1)
+    RelationshipSatisfaction = st.number_input("RelationshipSatisfaction", min_value=1, max_value=4, step=1)
+    StockOptionLevel = st.number_input("StockOptionLevel", min_value=0, max_value=3, step=1)
+    TotalWorkingYears = st.number_input("TotalWorkingYears", min_value=0, step=1)
+    TrainingTimesLastYear = st.number_input("TrainingTimesLastYear", min_value=0, step=1)
+    WorkLifeBalance = st.number_input("WorkLifeBalance", min_value=1, max_value=4, step=1)
+    YearsAtCompany = st.number_input("YearsAtCompany", min_value=0, step=1)
+    YearsInCurrentRole = st.number_input("YearsInCurrentRole", min_value=0, step=1)
+    YearsSinceLastPromotion = st.number_input("YearsSinceLastPromotion", min_value=0, step=1)
+    YearsWithCurrManager = st.number_input("YearsWithCurrManager", min_value=0, step=1)
+    BusinessTravel = st.selectbox("BusinessTravel", business_travel_list)
+    Department = st.selectbox("Department", department_list)
+    EducationField = st.selectbox("EducationField", education_field_list)
+    Gender = st.selectbox("Gender", gender_list)
+    JobRole = st.selectbox("JobRole", job_role_list)
+    MaritalStatus = st.selectbox("MaritalStatus", marital_list)
+    OverTime = st.selectbox("OverTime", ["Yes", "No"])
+
+    hr_data = {
+        "Age": Age,
+        "DailyRate": DailyRate,
+        "DistanceFromHome": DistanceFromHome,
+        "Education": Education,
+        "EnvironmentSatisfaction": EnvironmentSatisfaction,
+        "HourlyRate": HourlyRate,
+        "JobInvolvement": JobInvolvement,
+        "JobLevel": JobLevel,
+        "JobSatisfaction": JobSatisfaction,
+        "MonthlyIncome": MonthlyIncome,
+        "MonthlyRate": MonthlyRate,
+        "NumCompaniesWorked": NumCompaniesWorked,
+        "PercentSalaryHike": PercentSalaryHike,
+        "PerformanceRating": PerformanceRating,
+        "RelationshipSatisfaction": RelationshipSatisfaction,
+        "StockOptionLevel": StockOptionLevel,
+        "TotalWorkingYears": TotalWorkingYears,
+        "TrainingTimesLastYear": TrainingTimesLastYear,
+        "WorkLifeBalance": WorkLifeBalance,
+        "YearsAtCompany": YearsAtCompany,
+        "YearsInCurrentRole": YearsInCurrentRole,
+        "YearsSinceLastPromotion": YearsSinceLastPromotion,
+        "YearsWithCurrManager": YearsWithCurrManager,
+        "BusinessTravel": BusinessTravel,
+        "Department": Department,
+        "EducationField": EducationField,
+        "Gender": Gender,
+        "JobRole": JobRole,
+        "MaritalStatus": MaritalStatus,
+        "OverTime": OverTime
+    }
+
+    if st.button("Predict"):
+        try:
+            response = requests.post(api, json=hr_data, timeout=10)
+            if response.status_code == 200:
+                st.json(response.json())
+            else:
+                st.error(f"Error: {response.status_code}")
+        except requests.exceptions.RequestException:
+            st.error("Cannot connect to the API")
