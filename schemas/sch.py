@@ -96,3 +96,14 @@ class HousePredictSchema(BaseModel):
     FullBath: int
     OverallQual: int
     Neighborhood: str
+
+class HrSchema(BaseModel):
+    OverTime: str
+    MonthlyIncome: int
+    DistanceFromHome: int
+    JobRole: str
+    JobSatisfaction: int
+    Age: int
+    EnvironmentSatisfaction: int
+    YearsAtCompany: int
+    WorkLifeBalance: int
