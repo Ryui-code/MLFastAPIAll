@@ -14,30 +14,6 @@ department_list = ['Research & Development', 'Sales']
 education_list = ['Life Sciences', 'Marketing', 'Medical', 'Other', 'Technical Degree']
 marital_list = ['Married', 'Single']
 
-DEFAULTS = {
-    "Education": 3,
-    "HourlyRate": 50,
-    "JobInvolvement": 3,
-    "JobLevel": 2,
-    "MonthlyIncome": 5000,
-    "MonthlyRate": 20000,
-    "NumCompaniesWorked": 2,
-    "PercentSalaryHike": 12,
-    "PerformanceRating": 3,
-    "RelationshipSatisfaction": 3,
-    "StockOptionLevel": 1,
-    "TotalWorkingYears": 10,
-    "TrainingTimesLastYear": 2,
-    "YearsInCurrentRole": 3,
-    "YearsSinceLastPromotion": 1,
-    "YearsWithCurrManager": 2,
-    "BusinessTravel": "Travel_Rarely",
-    "Department": "Research & Development",
-    "EducationField": "Life Sciences",
-    "Gender": "Male",
-    "MaritalStatus": "Single"
-}
-
 def build_features(hr: HrSchema):
 
     numeric = [
