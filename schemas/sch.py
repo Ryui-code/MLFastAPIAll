@@ -128,3 +128,11 @@ class HrSchema(BaseModel):
     JobRole: str
     MaritalStatus: str
     OverTime: str
+
+class TitanicSchema(BaseModel):
+    Pclass: int
+    Sex: str
+    Age: int
+    SibSp: int
+    Parch: int
+    Embarked: str
