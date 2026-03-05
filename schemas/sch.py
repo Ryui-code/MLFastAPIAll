@@ -136,3 +136,14 @@ class TitanicSchema(BaseModel):
     SibSp: int
     Parch: int
     Embarked: str
+
+class MobileSchema(BaseModel):
+    Rating: int
+    Num_Ratings: int
+    RAM: int
+    ROM: int
+    Back_Cam: int
+    Front_Cam: int
+    Battery: int
+    Processor: str
+    Scrap_Date: str

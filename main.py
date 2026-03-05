@@ -1,6 +1,6 @@
 from fastapi import FastAPI
 import uvicorn
-from api import avocado, bank, diabetes, house, mushrooms, students, telecom, hr, titanic
+from api import avocado, bank, diabetes, house, mushrooms, students, telecom, hr, titanic, mobile
 
 app = FastAPI()
 
@@ -13,6 +13,7 @@ app.include_router(students.students_router)
 app.include_router(telecom.telecom_router)
 app.include_router(hr.hr_router)
 app.include_router(titanic.titanic_router)
+app.include_router(mobile.mobile_router)
 
 if __name__ == '__main__':
     uvicorn.run('main:app', reload=True)
