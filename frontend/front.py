@@ -469,3 +469,43 @@ if model == 'HR':
                 st.error(f"Error: {response.status_code}")
         except requests.exceptions.RequestException:
             st.error("Cannot connect to the API")
+
+if model == 'Mobile':
+
+    api = 'http://127.0.0.1:8000/mobile-predict/'
+
+    st.title('Mobile Price Prediction')
+
+    # Numeric fields
+    Rating = st.number_input('Rating', min_value=0.0, step=0.1)
+    Num_Ratings = st.number_input('Number of Ratings', min_value=0.0, step=100.0)
+    RAM = st.number_input('RAM (GB)', min_value=0.0, step=1.0)
+    ROM = st.number_input('ROM (GB)', min_value=0.0, step=1.0)
+    Back_Cam = st.number_input('Back Camera (MP)', min_value=0.0, step=1.0)
+    Front_Cam = st.number_input('Front Camera (MP)', min_value=0.0, step=1.0)
+    Battery = st.number_input('Battery (mAh)', min_value=0.0, step=100.0)
+    Processor = st.number_input('Processor', min_value=0.0)
+    Scrap_Date = st.selectbox('Scrap Date', ['2023-06-17', 'other'])
+
+    mobile_data = {
+        'Rating': Rating,
+        'Num_Ratings': Num_Ratings,
+        'RAM': RAM,
+        'ROM': ROM,
+        'Back_Cam': Back_Cam,
+        'Front_Cam': Front_Cam,
+        'Battery': Battery,
+        'Processor': Processor,
+        'Scrap_Date': Scrap_Date
+    }
+
+    if st.button('Predict'):
+        try:
+            request = requests.post(api, json=mobile_data, timeout=10)
+            if request.status_code == 200:
+                result = request.json()
+                st.success(f"Predicted price: {result['predict']}")
+            else:
+                st.error(f'Error: {request.status_code}')
+        except requests.exceptions.RequestException:
+            st.error('Can not connect to the API')
