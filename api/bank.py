@@ -12,7 +12,6 @@ home_ownership_list = ['OTHER', 'OWN', 'RENT']
 loan_intent_list = ['EDUCATION', 'HOMEIMPROVEMENT', 'MEDICAL', 'PERSONAL', 'VENTURE']
 
 def build_features(b: BankSchema):
-
     numeric = [
         b.person_age,
         b.person_income,

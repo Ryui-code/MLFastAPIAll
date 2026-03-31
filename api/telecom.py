@@ -19,7 +19,6 @@ Contract_list = ['One year', 'Two year']
 PaymentMethod_list = ['Credit card (automatic)', 'Electronic check', 'Mailed check']
 
 def build_features(t: TelecomSchema):
-
     numeric = [
         t.SeniorCitizen,
         t.tenure,

@@ -15,7 +15,6 @@ education_list = ['Life Sciences', 'Marketing', 'Medical', 'Other', 'Technical D
 marital_list = ['Married', 'Single']
 
 def build_features(hr: HrSchema):
-
     numeric = [
         hr.Age,
         hr.DailyRate,
